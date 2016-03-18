@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var btnMic: UIButton!
+    @IBOutlet weak var btnStop: UIButton!
+    @IBOutlet weak var lblRecord: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +25,9 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func actionMic(sender: AnyObject) {
+    }
+    @IBAction func actionStop(sender: AnyObject) {
+    }
 }
 
