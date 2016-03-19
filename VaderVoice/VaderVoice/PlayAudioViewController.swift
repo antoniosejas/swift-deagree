@@ -25,7 +25,7 @@ class PlayAudioViewController: UIViewController {
     var audioEngine: AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: NSTimer!
-    enum ButtonType : Int {case Slow = 0, Fast, Chipmunk, Vader, Parrot, Reverb}
+    enum ButtonType: Int {case Slow = 0, Fast, Chipmunk, Vader, Parrot, Reverb}
     
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class PlayAudioViewController: UIViewController {
         setupAudio()
     }
     override func viewWillAppear(animated: Bool) {
-        self.configureUI(.NotPlaying)
+        configureUI(.NotPlaying)
     }
     override func viewWillDisappear(animated: Bool) {
         //Stop audio when user leaves the screen

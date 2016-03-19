@@ -42,16 +42,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQl-jV-jXf">
-                                <rect key="frame" x="274" y="361" width="51" height="50"/>
+                                <rect key="frame" x="274" y="365" width="51" height="50"/>
                                 <inset key="contentEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="stop"/>
                                 <connections>
                                     <action selector="actionStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zZB-Ec-l0b"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ud-uk-CDM">
-                                <rect key="frame" x="273" y="317.5" width="54.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ud-uk-CDM">
+                                <rect key="frame" x="269" y="318" width="63.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -60,10 +60,10 @@
                         <constraints>
                             <constraint firstItem="4ud-uk-CDM" firstAttribute="centerX" secondItem="Lnf-Sc-e48" secondAttribute="centerX" id="DYu-pW-Rwz"/>
                             <constraint firstItem="Lnf-Sc-e48" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-41" id="Doj-cD-ZPt"/>
-                            <constraint firstItem="XQl-jV-jXf" firstAttribute="centerX" secondItem="4ud-uk-CDM" secondAttribute="centerX" id="LoH-5I-X3e"/>
+                            <constraint firstItem="XQl-jV-jXf" firstAttribute="centerX" secondItem="4ud-uk-CDM" secondAttribute="centerX" constant="-1" id="LoH-5I-X3e"/>
                             <constraint firstItem="Lnf-Sc-e48" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="abh-La-BbG"/>
                             <constraint firstItem="XQl-jV-jXf" firstAttribute="top" secondItem="4ud-uk-CDM" secondAttribute="bottom" constant="23" id="d89-Fc-3H7"/>
-                            <constraint firstItem="4ud-uk-CDM" firstAttribute="top" secondItem="Lnf-Sc-e48" secondAttribute="bottom" constant="8" id="tXX-FW-jt5"/>
+                            <constraint firstItem="4ud-uk-CDM" firstAttribute="top" secondItem="Lnf-Sc-e48" secondAttribute="bottom" constant="9" id="tXX-FW-jt5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="mKQ-BX-qXq"/>

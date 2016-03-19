@@ -16,7 +16,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var lblRecord: UILabel!
     
     var oldTextLblRecord = ""
-    var audioRecorder:AVAudioRecorder!
+    var audioRecorder: AVAudioRecorder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,16 +50,16 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
 
 
     @IBAction func actionMic(sender: AnyObject) {
-        self.oldTextLblRecord = lblRecord.text!
+        oldTextLblRecord = lblRecord.text!
         lblRecord.text = "Recording..."
         btnStop.enabled = true
         btnMic.enabled = false
         
-        self.recordAudio(sender)
+        recordAudio(sender)
         
     }
     @IBAction func actionStop(sender: AnyObject) {
-        lblRecord.text = self.oldTextLblRecord
+        lblRecord.text = oldTextLblRecord
         btnStop.enabled = false
         btnMic.enabled = true
         
