@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "reverb.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "reverb.png",
       "scale" : "2x"
     },
     {

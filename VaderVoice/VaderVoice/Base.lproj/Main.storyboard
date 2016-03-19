@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -24,7 +25,7 @@
         <!--Record-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VaderVoice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecordViewController" customModule="VaderVoice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -38,7 +39,6 @@
                                 <state key="normal" image="mic"/>
                                 <connections>
                                     <action selector="actionMic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p1k-98-paY"/>
-                                    <segue destination="4PS-RO-Uep" kind="show" id="XlB-mO-ZHG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQl-jV-jXf">
@@ -71,16 +71,17 @@
                         <outlet property="btnMic" destination="Lnf-Sc-e48" id="pSF-g2-YVJ"/>
                         <outlet property="btnStop" destination="XQl-jV-jXf" id="dWw-O0-zQn"/>
                         <outlet property="lblRecord" destination="4ud-uk-CDM" id="r4d-ty-1Jd"/>
+                        <segue destination="4PS-RO-Uep" kind="show" identifier="stopRecording" id="X4B-MD-WBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="305" y="389"/>
         </scene>
-        <!--View Controller-->
+        <!--Play Audio View Controller-->
         <scene sceneID="ojf-SM-GKI">
             <objects>
-                <viewController id="4PS-RO-Uep" sceneMemberID="viewController">
+                <viewController id="4PS-RO-Uep" customClass="PlayAudioViewController" customModule="VaderVoice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v24-yq-s3C"/>
                         <viewControllerLayoutGuide type="bottom" id="UCY-Hh-BTH"/>
@@ -89,50 +90,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IK0-yO-t4F">
-                                <rect key="frame" x="93" y="354" width="154" height="100"/>
-                                <state key="normal" image="chipmunk"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o66-5P-bnn">
-                                <rect key="frame" x="359" y="354" width="154" height="100"/>
-                                <state key="normal" image="chipmunk"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTd-PF-Be0">
-                                <rect key="frame" x="93" y="87" width="154" height="100"/>
-                                <state key="normal" image="chipmunk"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSF-L7-7RV">
-                                <rect key="frame" x="359" y="87" width="154" height="100"/>
-                                <state key="normal" image="chipmunk"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLQ-xz-y7P">
-                                <rect key="frame" x="93" y="218" width="154" height="100"/>
-                                <state key="normal" image="chipmunk"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY0-Ee-KUC">
-                                <rect key="frame" x="359" y="218" width="154" height="100"/>
-                                <state key="normal" image="chipmunk"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CXI-bz-UB4">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LPZ-VH-3rl">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="134"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyg-XC-uBd">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="134"/>
+                                                <state key="normal" image="slow"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUD-Nd-XdX">
+                                                <rect key="frame" x="280" y="0.0" width="280" height="134"/>
+                                                <state key="normal" image="fast"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cNI-KU-SMd">
+                                        <rect key="frame" x="0.0" y="134" width="560" height="134"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IK0-yO-t4F">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="134"/>
+                                                <state key="normal" image="chipmunk"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o66-5P-bnn">
+                                                <rect key="frame" x="280" y="0.0" width="280" height="134"/>
+                                                <state key="normal" image="darthvader"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-xT-e7X">
+                                        <rect key="frame" x="0.0" y="268" width="560" height="134"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIu-Ny-duc">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="134"/>
+                                                <state key="normal" image="echo"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmM-PK-BUP">
+                                                <rect key="frame" x="280" y="0.0" width="280" height="134"/>
+                                                <state key="normal" image="reverb"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xj3-a7-rzA">
+                                        <rect key="frame" x="0.0" y="402" width="560" height="134"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-j0-2uc">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="134"/>
+                                                <state key="normal" image="stop"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o66-5P-bnn" firstAttribute="centerX" secondItem="bQW-pk-G7F" secondAttribute="centerX" constant="136" id="8kJ-mS-f6T"/>
-                            <constraint firstItem="CLQ-xz-y7P" firstAttribute="centerX" secondItem="bQW-pk-G7F" secondAttribute="centerX" constant="-130" id="X2J-y2-92N"/>
-                            <constraint firstItem="HSF-L7-7RV" firstAttribute="centerX" secondItem="bQW-pk-G7F" secondAttribute="centerX" constant="136" id="e1N-dI-HXl"/>
-                            <constraint firstItem="IK0-yO-t4F" firstAttribute="centerX" secondItem="bQW-pk-G7F" secondAttribute="centerX" constant="-130" id="fxM-RM-7tb"/>
-                            <constraint firstItem="xY0-Ee-KUC" firstAttribute="centerX" secondItem="bQW-pk-G7F" secondAttribute="centerX" constant="136" id="hv8-Mc-evO"/>
-                            <constraint firstItem="fTd-PF-Be0" firstAttribute="centerX" secondItem="bQW-pk-G7F" secondAttribute="centerX" constant="-130" id="i6c-xc-23O"/>
+                            <constraint firstItem="UCY-Hh-BTH" firstAttribute="top" secondItem="CXI-bz-UB4" secondAttribute="bottom" id="0CC-of-Cxw"/>
+                            <constraint firstItem="CXI-bz-UB4" firstAttribute="leading" secondItem="bQW-pk-G7F" secondAttribute="leadingMargin" id="6AD-dW-wK9"/>
+                            <constraint firstItem="CXI-bz-UB4" firstAttribute="top" secondItem="v24-yq-s3C" secondAttribute="bottom" id="tUR-Gk-OSC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CXI-bz-UB4" secondAttribute="trailing" id="z33-oG-pcF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnChipmunk" destination="IK0-yO-t4F" id="bpk-N5-UD8"/>
+                        <outlet property="btnFast" destination="kUD-Nd-XdX" id="Ddi-XF-Aha"/>
+                        <outlet property="btnParrot" destination="vIu-Ny-duc" id="45a-V9-0Ev"/>
+                        <outlet property="btnReverb" destination="qmM-PK-BUP" id="3fg-4t-yUE"/>
+                        <outlet property="btnSnail" destination="Oyg-XC-uBd" id="nok-Ph-YqW"/>
+                        <outlet property="btnStop" destination="9B0-j0-2uc" id="YoF-Pq-teY"/>
+                        <outlet property="btnVader" destination="o66-5P-bnn" id="kko-Q7-s0W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Azc-ZU-67z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="389"/>
+            <point key="canvasLocation" x="1065" y="389"/>
         </scene>
     </scenes>
     <resources>
         <image name="chipmunk" width="100" height="100"/>
+        <image name="darthvader" width="100" height="100"/>
+        <image name="echo" width="80" height="80"/>
+        <image name="fast" width="100" height="100"/>
         <image name="mic" width="100" height="100"/>
+        <image name="reverb" width="80" height="80"/>
+        <image name="slow" width="100" height="100"/>
         <image name="stop" width="50" height="50"/>
     </resources>
 </document>
