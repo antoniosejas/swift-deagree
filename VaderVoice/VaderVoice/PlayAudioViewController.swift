@@ -26,6 +26,13 @@ class PlayAudioViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func playSoundForButtom(sender: AnyObject) {
+        print("playsound",sender)
+    }
+    
+    @IBAction func stopSoundForButtom(sender: AnyObject) {
+        print("stopsound",sender)        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
