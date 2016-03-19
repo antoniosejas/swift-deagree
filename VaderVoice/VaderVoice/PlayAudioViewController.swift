@@ -61,7 +61,7 @@ class PlayAudioViewController: UIViewController {
     
     @IBAction func stopSoundForButtom(sender: AnyObject) {
         print("stopsound",sender)
-        
+        stopAudio()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
