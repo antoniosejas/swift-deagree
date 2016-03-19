@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-extension PlaySoundsViewController: AVAudioPlayerDelegate {
+extension PlayAudioViewController: AVAudioPlayerDelegate {
     struct Alerts {
         static let DismissAlert = "Dismiss"
         static let RecordingDisabledTitle = "Recording Disabled"
@@ -30,7 +30,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     func setupAudio() {
         // initialize (recording) audio file
         do {
-            audioFile = try AVAudioFile(forReading: recordedAudioURL)
+            audioFile = try AVAudioFile(forReading: urlAudio)
         } catch {
             showAlert(Alerts.AudioFileError, message: String(error))
         }
@@ -143,20 +143,20 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         switch(playState) {
         case .Playing:
             setPlayButtonsEnabled(false)
-            stopButton.enabled = true
+            btnStop.enabled = true
         case .NotPlaying:
             setPlayButtonsEnabled(true)
-            stopButton.enabled = false
+            btnStop.enabled = false
         }
     }
     
     func setPlayButtonsEnabled(enabled: Bool) {
-        snailButton.enabled = enabled
-        chipmunkButton.enabled = enabled
-        rabbitButton.enabled = enabled
-        vaderButton.enabled = enabled
-        echoButton.enabled = enabled
-        reverbButton.enabled = enabled
+        btnSnail.enabled = enabled
+        btnChipmunk.enabled = enabled
+        btnFast.enabled = enabled
+        btnVader.enabled = enabled
+        btnParrot.enabled = enabled
+        btnReverb.enabled = enabled
     }
 
     
