@@ -36,6 +36,10 @@ class PlayAudioViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.configureUI(.NotPlaying)
     }
+    override func viewWillDisappear(animated: Bool) {
+        //Stop audio when user leaves the screen
+        stopAudio()
+    }
 
     @IBAction func playSoundForButtom(sender: UIButton) {
         print("playsound",sender)
