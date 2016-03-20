@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="305" y="389"/>
         </scene>
-        <!--Play Audio View Controller-->
+        <!--Play-->
         <scene sceneID="ojf-SM-GKI">
             <objects>
-                <viewController id="4PS-RO-Uep" customClass="PlayAudioViewController" customModule="VaderVoice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Play" id="4PS-RO-Uep" customClass="PlayAudioViewController" customModule="VaderVoice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v24-yq-s3C"/>
                         <viewControllerLayoutGuide type="bottom" id="UCY-Hh-BTH"/>
