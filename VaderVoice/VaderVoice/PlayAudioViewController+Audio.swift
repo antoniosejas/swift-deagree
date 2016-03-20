@@ -22,15 +22,14 @@ extension PlayAudioViewController: AVAudioPlayerDelegate {
     }
     
     // raw values correspond to sender tags
-    enum PlayingState { case Playing, NotPlaying }
-
-    
+    enum PlayingState { case Playing, NotPlaying, Init }
     // MARK: Audio Functions
     
     func setupAudio() {
         // initialize (recording) audio file
         do {
             audioFile = try AVAudioFile(forReading: urlAudio)
+            configureUI(.Init)
         } catch {
             showAlert(Alerts.AudioFileError, message: String(error))
         }
@@ -82,16 +81,7 @@ extension PlayAudioViewController: AVAudioPlayerDelegate {
         audioPlayerNode.stop()
         audioPlayerNode.scheduleFile(audioFile, atTime: nil) {
             
-            var delayInSeconds: Double = 0
-            
-            if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTimeForNodeTime(lastRenderTime) {
-                
-                if let rate = rate {
-                    delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate) / Double(rate)
-                } else {
-                    delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate)
-                }
-            }
+            let delayInSeconds: Double = self.getCurrentTimeDuration(rate)
             
             // schedule a stop timer for when audio finishes playing
             self.stopTimer = NSTimer(timeInterval: delayInSeconds, target: self, selector: "stopAudio", userInfo: nil, repeats: false)
@@ -105,10 +95,28 @@ extension PlayAudioViewController: AVAudioPlayerDelegate {
             return
         }
         
+        currentDuration = getCurrentTimeDuration(rate,fromBegin: true)
         // play the recording!
         audioPlayerNode.play()
     }
-    
+
+    //Get Current time to stop the player in the right moment
+    func getCurrentTimeDuration(rate: Float?,fromBegin: Bool? = false) -> Double {
+        var delayInSeconds: Double = 0,
+            playerSampleTime: AVAudioFramePosition = 0
+        if let lastRenderTime = self.audioPlayerNode.lastRenderTime{
+            if let playerTime = self.audioPlayerNode.playerTimeForNodeTime(lastRenderTime) {
+                playerSampleTime = playerTime.sampleTime
+            }
+            
+            if let rate = rate {
+                delayInSeconds = Double(self.audioFile.length - playerSampleTime) / Double(self.audioFile.processingFormat.sampleRate) / Double(rate)
+            } else {
+                delayInSeconds = Double(self.audioFile.length - playerSampleTime) / Double(self.audioFile.processingFormat.sampleRate)
+            }
+        }
+        return delayInSeconds
+    }
     
     // MARK: Connect List of Audio Nodes
     
@@ -144,9 +152,15 @@ extension PlayAudioViewController: AVAudioPlayerDelegate {
         case .Playing:
             setPlayButtonsEnabled(false)
             btnStop.enabled = true
+            lblTime.text = "Duration: \(String(format: "%.1f", currentDuration))s"
+            lblTime.hidden = false
+            lblTime.enabled = true
+            
         case .NotPlaying:
             setPlayButtonsEnabled(true)
             btnStop.enabled = false
+        case .Init:
+            lblTime.text = ""
         }
     }
     

@@ -18,6 +18,8 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var btnReverb: UIButton!
     @IBOutlet weak var btnStop: UIButton!
     
+    @IBOutlet weak var lblTime: UILabel!
+    
     
     var urlAudio = NSURL()
     
@@ -25,6 +27,9 @@ class PlayAudioViewController: UIViewController {
     var audioEngine: AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: NSTimer!
+    // currentRate while playing sound, to update actual duration
+    var currentDuration: Double = 0
+    
     enum ButtonType: Int {case Slow = 0, Fast, Chipmunk, Vader, Parrot, Reverb}
     
     

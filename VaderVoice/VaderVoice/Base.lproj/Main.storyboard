@@ -150,11 +150,17 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xj3-a7-rzA">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cIy-sx-QBK">
                                         <rect key="frame" x="0.0" y="402" width="560" height="134"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: 46s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msB-2G-F6l">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="134"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-j0-2uc">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="134"/>
+                                                <rect key="frame" x="280" y="0.0" width="280" height="134"/>
                                                 <state key="normal" image="stop"/>
                                                 <connections>
                                                     <action selector="stopSoundForButtom:" destination="4PS-RO-Uep" eventType="touchUpInside" id="R4u-ZW-J8A"/>
@@ -181,6 +187,7 @@
                         <outlet property="btnSnail" destination="Oyg-XC-uBd" id="nok-Ph-YqW"/>
                         <outlet property="btnStop" destination="9B0-j0-2uc" id="YoF-Pq-teY"/>
                         <outlet property="btnVader" destination="o66-5P-bnn" id="kko-Q7-s0W"/>
+                        <outlet property="lblTime" destination="msB-2G-F6l" id="pJt-HJ-0Pe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Azc-ZU-67z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,10 +198,10 @@
     <resources>
         <image name="chipmunk" width="100" height="100"/>
         <image name="darthvader" width="100" height="100"/>
-        <image name="echo" width="80" height="80"/>
+        <image name="echo" width="100" height="100"/>
         <image name="fast" width="100" height="100"/>
         <image name="mic" width="100" height="100"/>
-        <image name="reverb" width="80" height="80"/>
+        <image name="reverb" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>
         <image name="stop" width="50" height="50"/>
     </resources>
