@@ -12,10 +12,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var imgChoosed: UIImageView!
     @IBOutlet weak var btnCamera: UIBarButtonItem!
+    @IBOutlet weak var tfTOP: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tfTOP.delegate = TextEditDelegate()
+//        tfTOP.backgroundColor = UIColor.clearColor()
+//        tfTOP.borderStyle = UITextBorderStyle.None
     }
     
     override func viewWillAppear(animated: Bool) {
