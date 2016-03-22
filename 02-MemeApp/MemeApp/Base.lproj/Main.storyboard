@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-xS-T9J">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-xS-T9J">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30t-82-0n0">
@@ -41,7 +41,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KQx-CG-dQL"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
                                 <rect key="frame" x="20" y="45" width="560" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -54,7 +54,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="30t-82-0n0" secondAttribute="trailing" constant="-20" id="7Tt-DJ-aG6"/>
                             <constraint firstItem="u1C-wU-dLz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="EB7-27-8ED"/>
                             <constraint firstItem="30t-82-0n0" firstAttribute="top" secondItem="Ggd-xS-T9J" secondAttribute="bottom" id="GgJ-Mr-dwp"/>
-                            <constraint firstItem="30t-82-0n0" firstAttribute="top" secondItem="Ggd-xS-T9J" secondAttribute="bottom" constant="245" id="H6L-Y7-vFG"/>
                             <constraint firstItem="30t-82-0n0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="X7P-Ph-DpU"/>
                             <constraint firstAttribute="trailing" secondItem="u1C-wU-dLz" secondAttribute="trailing" constant="20" id="Yzk-YI-7aZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="30t-82-0n0" secondAttribute="bottom" id="cdp-XM-WgU"/>

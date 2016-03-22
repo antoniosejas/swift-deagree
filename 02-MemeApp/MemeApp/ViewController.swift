@@ -14,11 +14,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnCamera: UIBarButtonItem!
     @IBOutlet weak var tfTOP: UITextField!
     
+    //It must be declared as property in the class,
+    // because if it is declared inside of viewDidLoad, the object is just temporal
+    let textEditDelegate = TextEditDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfTOP.delegate = TextEditDelegate()
-//        tfTOP.backgroundColor = UIColor.clearColor()
-//        tfTOP.borderStyle = UITextBorderStyle.None
+        tfTOP.delegate = textEditDelegate
+        print(tfTOP.delegate)
     }
     
     override func viewWillAppear(animated: Bool) {

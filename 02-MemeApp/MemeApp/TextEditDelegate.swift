@@ -9,9 +9,16 @@
 import UIKit
 
 class TextEditDelegate: NSObject, UITextFieldDelegate {
+    struct strings {
+        let top =  "TOP"
+        let bottom =  "BOTTOM"
+    }
+    var stringConstants = strings()
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        textField.text = ""
+        if(stringConstants.top == textField.text ){
+            textField.text = ""
+        }
         print("textFieldDidBeginEditing    ",textField)
     }
     
@@ -19,4 +26,9 @@ class TextEditDelegate: NSObject, UITextFieldDelegate {
         print("textFieldDidEndEditing    ",textField)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        //Hide the keyboard
+        textField.resignFirstResponder()
+        return true
+    }
 }
