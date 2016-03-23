@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem id="V6y-xO-G9J">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="h7C-vQ-oDc">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="action" id="h7C-vQ-oDc">
                                             <connections>
                                                 <action selector="actionShare:" destination="BYZ-38-t0r" id="myn-xB-VMY"/>
                                             </connections>

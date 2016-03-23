@@ -74,8 +74,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         presentViewController(pickerController, animated: true, completion: nil)
     }
-    
-    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         print("info: ",info)
         //UIImagePickerControllerMediaType
@@ -85,6 +83,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imgChoosed.image = image
+            //Enable the share button 
+            btnShare.enabled = true
         }else{
             print("Error, returnin the image in didFinishPickingMediaWithInfo",info)
         }
