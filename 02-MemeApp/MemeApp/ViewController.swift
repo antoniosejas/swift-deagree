@@ -18,11 +18,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //It must be declared as property in the class,
     // because if it is declared inside of viewDidLoad, the object is just temporal
     let textEditDelegate = TextEditDelegate()
-
+    
     //Var to know if the keyboard was shown
     //It fix a bug, when user tap in one textFiend and then to another.
     var keyboardIsShown = false
     
+    //MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +56,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
+    //MARK: Picker
     @IBAction func actionPickImage(sender: AnyObject) {
         pickImageAux(sender)
     }
@@ -122,19 +124,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
-
-    //textFieldDidBeginEditing
-    //textFieldShouldReturn
     
-//    let memeTextAttributes = [
-//        NSStrokeColorAttributeName : //TODO: Fill in appropriate UIColor,
-//        NSForegroundColorAttributeName : //TODO: Fill in UIColor,
-//        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-//        NSStrokeWidthAttributeName : //TODO: Fill in appropriate Float
-//    ]
-
-//    yourTextField.defaultTextAttributes = memeTextAttributes
-//    yourOtherTextField.defaultTextAttributes = memeTextAttributes
+    func save() {
+        
+        //Create the meme
+        let meme = Meme( textTop: tfTop.text!, textBottom: tfBottom.text!, image: imgChoosed.image!, memedImage: imgChoosed.image!)
+    }
 
 }
 

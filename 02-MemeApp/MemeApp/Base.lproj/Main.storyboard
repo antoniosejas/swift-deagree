@@ -47,8 +47,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqx-DU-DnN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="V6y-xO-G9J">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="h7C-vQ-oDc"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Yx6-Xy-Tvz"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
-                                <rect key="frame" x="20" y="44" width="560" height="30"/>
+                                <rect key="frame" x="20" y="59" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -57,7 +66,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ggd-xS-T9J" secondAttribute="trailing" id="14u-nq-nHb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="30t-82-0n0" secondAttribute="trailing" constant="-20" id="7Tt-DJ-aG6"/>
-                            <constraint firstItem="u1C-wU-dLz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="EB7-27-8ED"/>
+                            <constraint firstItem="u1C-wU-dLz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="39" id="EB7-27-8ED"/>
                             <constraint firstItem="30t-82-0n0" firstAttribute="top" secondItem="Ggd-xS-T9J" secondAttribute="bottom" id="GgJ-Mr-dwp"/>
                             <constraint firstItem="30t-82-0n0" firstAttribute="top" secondItem="d5G-S0-fs7" secondAttribute="bottom" constant="19" id="ICM-mR-KzU"/>
                             <constraint firstAttribute="trailing" secondItem="d5G-S0-fs7" secondAttribute="trailing" constant="20" id="PN7-Nr-v8d"/>
