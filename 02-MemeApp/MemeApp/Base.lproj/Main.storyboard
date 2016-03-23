@@ -49,7 +49,7 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="D9D-S0-5Gr"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="y04-7Z-0cJ"/>
-                                    <barButtonItem title="Camera" id="Uhz-qq-Q1z">
+                                    <barButtonItem systemItem="camera" id="Uhz-qq-Q1z">
                                         <connections>
                                             <action selector="actionPickImageCamera:" destination="BYZ-38-t0r" id="62g-X6-cj6"/>
                                         </connections>
