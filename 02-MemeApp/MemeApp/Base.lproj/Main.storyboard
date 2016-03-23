@@ -41,6 +41,11 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KQx-CG-dQL"/>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
+                                <rect key="frame" x="20" y="59" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-S0-fs7">
                                 <rect key="frame" x="20" y="507" width="560" height="33"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -51,16 +56,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem id="V6y-xO-G9J">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="h7C-vQ-oDc"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Yx6-Xy-Tvz"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="h7C-vQ-oDc">
+                                            <connections>
+                                                <action selector="actionShare:" destination="BYZ-38-t0r" id="myn-xB-VMY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Yx6-Xy-Tvz">
+                                            <connections>
+                                                <action selector="actionCancel:" destination="BYZ-38-t0r" id="sd3-iz-21P"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
-                                <rect key="frame" x="20" y="59" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -90,6 +98,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="btnCamera" destination="Uhz-qq-Q1z" id="waR-d8-8p0"/>
+                        <outlet property="btnShare" destination="h7C-vQ-oDc" id="9tD-9K-5DL"/>
                         <outlet property="imgChoosed" destination="Ggd-xS-T9J" id="RdD-F2-2Hr"/>
                         <outlet property="tfBottom" destination="d5G-S0-fs7" id="d0B-sU-FZP"/>
                         <outlet property="tfTop" destination="u1C-wU-dLz" id="BFA-bE-YWx"/>

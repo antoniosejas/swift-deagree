@@ -13,6 +13,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imgChoosed: UIImageView!
     @IBOutlet weak var btnCamera: UIBarButtonItem!
     @IBOutlet weak var tfTop: UITextField!
+    @IBOutlet weak var btnShare: UIBarButtonItem!
     @IBOutlet weak var tfBottom: UITextField!
     
     //It must be declared as property in the class,
@@ -32,6 +33,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
     }
+    
     func initTextField(tf:UITextField){
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -54,6 +56,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    //Hide status Bar
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     //MARK: Picker
@@ -90,6 +97,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         print("picker canceled")
+    }
+    
+    //MARK: Share Cancel
+    @IBAction func actionShare(sender: AnyObject) {
+    }
+    @IBAction func actionCancel(sender: AnyObject) {
     }
     
     
