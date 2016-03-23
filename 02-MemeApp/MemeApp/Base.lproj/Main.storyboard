@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-xS-T9J">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-xS-T9J">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-S0-fs7">
@@ -74,7 +74,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ggd-xS-T9J" secondAttribute="trailing" id="14u-nq-nHb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="30t-82-0n0" secondAttribute="trailing" constant="-20" id="7Tt-DJ-aG6"/>
-                            <constraint firstItem="30t-82-0n0" firstAttribute="top" secondItem="Ggd-xS-T9J" secondAttribute="bottom" id="GgJ-Mr-dwp"/>
+                            <constraint firstItem="30t-82-0n0" firstAttribute="top" secondItem="Ggd-xS-T9J" secondAttribute="bottom" constant="-44" id="GgJ-Mr-dwp"/>
                             <constraint firstItem="30t-82-0n0" firstAttribute="top" secondItem="d5G-S0-fs7" secondAttribute="bottom" constant="16" id="ICM-mR-KzU"/>
                             <constraint firstItem="zqx-DU-DnN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Iy1-q3-6oW"/>
                             <constraint firstItem="u1C-wU-dLz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="PJG-W8-Fve"/>
