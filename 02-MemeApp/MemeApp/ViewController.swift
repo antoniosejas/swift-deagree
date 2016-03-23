@@ -127,7 +127,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         toolbar.hidden = true
         
         UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        var frame = self.view.frame
+        frame.size.height += toolbar.frame.height
+        view.drawViewHierarchyInRect(frame, afterScreenUpdates: true)
         let memeImg: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
