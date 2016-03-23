@@ -10,6 +10,6 @@ import UIKit
 struct Meme {
     var textTop: String
     var textBottom: String
-    var image: UIImage
-    var memedImage: UIImage
+    var img: UIImage
+    var memeImg: UIImage
 }

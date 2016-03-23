@@ -102,14 +102,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func actionShare(sender: AnyObject) {
         //
         let memeImg = generateImage()
-        let viewController = UIActivityViewController(activityItems: [memeImg], applicationActivities: [])
-        presentViewController(viewController, animated: true, completion: nil)
+        let activityVC = UIActivityViewController(activityItems: [memeImg], applicationActivities: [])
+        presentViewController(activityVC, animated: true, completion: nil)
+        
+        activityVC.completionWithItemsHandler = { activity, success, items, error in
+            print("activity", activity)
+            print("success", success)
+            print("items", items)
+            print("error", error)
+            if success {
+                // user confirmed, save the meme
+                self.saveMeme(memeImg)
+            }
+        }
+        
     }
     @IBAction func actionCancel(sender: AnyObject) {
     }
     
     
-    //MARK: Generate Image
+    //MARK: Generate and Save Image
     func generateImage() -> UIImage {
         //Hide bars
         navigationBar.hidden = true
@@ -127,6 +139,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memeImg
     }
     
+    //
+    func saveMeme(memeImage: UIImage) -> Meme {
+        //Create the meme
+        let meme = Meme( textTop: tfTop.text!, textBottom: tfBottom.text!, img: imgChoosed.image!, memeImg: memeImage)
+        return meme
+    }
     
     //MARK: Keyboard
     
@@ -155,12 +173,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    func save() {
-        
-        //Create the meme
-        let meme = Meme( textTop: tfTop.text!, textBottom: tfBottom.text!, image: imgChoosed.image!, memedImage: imgChoosed.image!)
     }
 
 }
