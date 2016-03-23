@@ -21,7 +21,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-xS-T9J">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-S0-fs7">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-S0-fs7">
                                 <rect key="frame" x="20" y="507" width="560" height="33"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -64,7 +64,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KQx-CG-dQL"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
                                 <rect key="frame" x="20" y="69" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -97,8 +97,10 @@
                         <outlet property="btnCamera" destination="Uhz-qq-Q1z" id="waR-d8-8p0"/>
                         <outlet property="btnShare" destination="h7C-vQ-oDc" id="9tD-9K-5DL"/>
                         <outlet property="imgChoosed" destination="Ggd-xS-T9J" id="RdD-F2-2Hr"/>
+                        <outlet property="navigationBar" destination="zqx-DU-DnN" id="1PN-7O-NWl"/>
                         <outlet property="tfBottom" destination="d5G-S0-fs7" id="d0B-sU-FZP"/>
                         <outlet property="tfTop" destination="u1C-wU-dLz" id="BFA-bE-YWx"/>
+                        <outlet property="toolbar" destination="30t-82-0n0" id="c8E-Th-gzh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

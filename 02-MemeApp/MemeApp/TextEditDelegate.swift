@@ -13,6 +13,8 @@ class TextEditDelegate: NSObject, UITextFieldDelegate {
         let top =  "TOP"
         let bottom =  "BOTTOM"
     }
+    enum textFieldTag: Int {case Top = 1, Bottom}
+    
     var stringConstants = strings()
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -20,16 +22,19 @@ class TextEditDelegate: NSObject, UITextFieldDelegate {
          || stringConstants.bottom == textField.text ){
             textField.text = ""
         }
-        print("textFieldDidBeginEditing    ",textField)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        print("textFieldDidEndEditing    ",textField)
-                textField.resignFirstResponder()
+        if("" == textField.text){
+            if(textField.tag == textFieldTag.Top.rawValue){
+                textField.text = stringConstants.top
+            }else{
+                textField.text = stringConstants.bottom
+            }
+        }
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
         return true
     }
     

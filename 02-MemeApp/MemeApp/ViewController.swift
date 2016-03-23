@@ -10,11 +10,14 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var imgChoosed: UIImageView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var toolbar: UIToolbar!
+
+    @IBOutlet weak var btnShare: UIBarButtonItem!
     @IBOutlet weak var btnCamera: UIBarButtonItem!
     @IBOutlet weak var tfTop: UITextField!
-    @IBOutlet weak var btnShare: UIBarButtonItem!
     @IBOutlet weak var tfBottom: UITextField!
+    @IBOutlet weak var imgChoosed: UIImageView!
     
     //It must be declared as property in the class,
     // because if it is declared inside of viewDidLoad, the object is just temporal
@@ -92,13 +95,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        print("picker canceled")
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //MARK: Share Cancel
+    //MARK: Share, Cancel Actions
     @IBAction func actionShare(sender: AnyObject) {
+        //
+        let memeImg = generateImage()
+        let viewController = UIActivityViewController(activityItems: [memeImg], applicationActivities: [])
+        presentViewController(viewController, animated: true, completion: nil)
     }
     @IBAction func actionCancel(sender: AnyObject) {
+    }
+    
+    
+    //MARK: Generate Image
+    func generateImage() -> UIImage {
+        //Hide bars
+        navigationBar.hidden = true
+        toolbar.hidden = true
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memeImg: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        //restore visibility bars
+        navigationBar.hidden = false
+        toolbar.hidden = false
+
+        return memeImg
     }
     
     
