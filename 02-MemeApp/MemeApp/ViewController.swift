@@ -18,6 +18,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //It must be declared as property in the class,
     // because if it is declared inside of viewDidLoad, the object is just temporal
     let textEditDelegate = TextEditDelegate()
+
+    //Var to know if the keyboard was shown
+    //It fix a bug, when user tap in one textFiend and then to another.
+    var keyboardIsShown = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName : -4.0
+            NSStrokeWidthAttributeName : -7.0
         ]
         
         tf.defaultTextAttributes = memeTextAttributes
@@ -42,6 +46,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         btnCamera.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         suscribeKeyboardNotification()
     }
@@ -95,10 +100,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.CGRectValue().height
     }
     func keyboardWillShow(notification: NSNotification){
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        print("UIKeyboardFrameBeginUserInfoKey \(notification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size.height) --- \(getKeyboardHeight(notification))")
+        if(!keyboardIsShown){
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        keyboardIsShown = true
     }
     func keyboardWillHide(notification: NSNotification){
-        view.frame.origin.y += getKeyboardHeight(notification)
+        if(keyboardIsShown){
+            view.frame.origin.y += getKeyboardHeight(notification)
+        }
+        keyboardIsShown = false
     }
     
     //Suscribe and Unsuscribe to keyboard to move the view to show the textField at the bottom
@@ -107,10 +119,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     func unsubscribeFromKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:
-            UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:
-            UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
 
     //textFieldDidBeginEditing

@@ -25,6 +25,12 @@ class TextEditDelegate: NSObject, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         print("textFieldDidEndEditing    ",textField)
+                textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+        return true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
