@@ -26,11 +26,7 @@ class TextEditDelegate: NSObject, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         if("" == textField.text){
-            if(textField.tag == textFieldTag.Top.rawValue){
-                textField.text = stringConstants.top
-            }else{
-                textField.text = stringConstants.bottom
-            }
+            resetTextFromTextField(textField)
         }
     }
     
@@ -42,5 +38,14 @@ class TextEditDelegate: NSObject, UITextFieldDelegate {
         //Hide the keyboard
         textField.resignFirstResponder()
         return true
+    }
+
+    //Also is called from ViewController
+    func resetTextFromTextField(textField: UITextField) {
+        if(textField.tag == textFieldTag.Top.rawValue){
+            textField.text = stringConstants.top
+        }else{
+            textField.text = stringConstants.bottom
+        }
     }
 }

@@ -29,11 +29,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         initTextField(tfTop)
         initTextField(tfBottom)
-        
-        
+    }
+
+    //Cancel Button Action
+    @IBAction func actionCancel(sender: AnyObject) {
+        initTextField(tfTop)
+        initTextField(tfBottom)
+        imgChoosed.image = UIImage()
     }
     
-    func initTextField(tf:UITextField){
+    func initTextField(textField:UITextField){
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -41,10 +46,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSStrokeWidthAttributeName : -7.0
         ]
         
-        tf.defaultTextAttributes = memeTextAttributes
+        textField.defaultTextAttributes = memeTextAttributes
         //The textAlignment must be after set the defaultTextAttributes
-        tf.textAlignment = .Center
-        tf.delegate = textEditDelegate
+        textField.textAlignment = .Center
+        textField.delegate = textEditDelegate
+        textEditDelegate.resetTextFromTextField(textField)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -98,7 +104,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //MARK: Share, Cancel Actions
+    //MARK: Share Action
     @IBAction func actionShare(sender: AnyObject) {
         //
         let memeImg = generateImage()
@@ -106,10 +112,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         presentViewController(activityVC, animated: true, completion: nil)
         
         activityVC.completionWithItemsHandler = { activity, success, items, error in
-            print("activity", activity)
-            print("success", success)
-            print("items", items)
-            print("error", error)
             if success {
                 // user confirmed, save the meme
                 self.saveMeme(memeImg)
@@ -117,9 +119,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
     }
-    @IBAction func actionCancel(sender: AnyObject) {
-    }
-    
     
     //MARK: Generate and Save Image
     func generateImage() -> UIImage {
