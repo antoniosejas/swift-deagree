@@ -16,7 +16,8 @@ class TextEditDelegate: NSObject, UITextFieldDelegate {
     var stringConstants = strings()
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        if(stringConstants.top == textField.text ){
+        if( stringConstants.top == textField.text
+         || stringConstants.bottom == textField.text ){
             textField.text = ""
         }
         print("textFieldDidBeginEditing    ",textField)

@@ -12,7 +12,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var imgChoosed: UIImageView!
     @IBOutlet weak var btnCamera: UIBarButtonItem!
-    @IBOutlet weak var tfTOP: UITextField!
+    @IBOutlet weak var tfTop: UITextField!
+    @IBOutlet weak var tfBottom: UITextField!
     
     //It must be declared as property in the class,
     // because if it is declared inside of viewDidLoad, the object is just temporal
@@ -20,12 +21,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfTOP.delegate = textEditDelegate
-        print(tfTOP.delegate)
+        
+        initTextField(tfTop)
+        initTextField(tfBottom)
+        
+        
+    }
+    func initTextField(tf:UITextField){
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName : -4.0
+        ]
+        
+        tf.defaultTextAttributes = memeTextAttributes
+        //The textAlignment must be after set the defaultTextAttributes
+        tf.textAlignment = .Center
+        tf.delegate = textEditDelegate
     }
     
     override func viewWillAppear(animated: Bool) {
-       btnCamera.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        btnCamera.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        suscribeKeyboardNotification()
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
     }
     
     @IBAction func actionPickImage(sender: AnyObject) {
@@ -60,7 +82,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        
+        print("picker canceled")
+    }
+    
+    
+    //MARK: Keyboard
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat{
+        let userInfo = notification.userInfo
+        //of CGRect
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.CGRectValue().height
+    }
+    func keyboardWillShow(notification: NSNotification){
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    func keyboardWillHide(notification: NSNotification){
+        view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
+    //Suscribe and Unsuscribe to keyboard to move the view to show the textField at the bottom
+    func suscribeKeyboardNotification(){
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    func unsubscribeFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillHideNotification, object: nil)
     }
 
     //textFieldDidBeginEditing
