@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let textEditDelegate = TextEditDelegate()
     
     var currentFont = 0
-    var fonts = ["Impact", "HelveticaNeue-CondensedBlack"]
+    let fonts = ["Impact", "HelveticaNeue-CondensedBlack"]
     
     //MARK: Init
     override func viewDidLoad() {
@@ -39,8 +39,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
-//            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            //impact.tt
             NSFontAttributeName : UIFont(name: fonts[currentFont], size: 40)!,
             NSStrokeWidthAttributeName : -7.0
         ]
@@ -76,7 +74,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //ChangeFont Action
     @IBAction func actionChangeFont(sender: AnyObject) {
-        fonts = UIFont.familyNames()
+        //We could let choose between al the fonts, but we should fix the stroke as well.
+        //fonts = UIFont.familyNames()
         currentFont = (currentFont+1) % fonts.count
         let size: CGFloat = 40
         tfTop.font = UIFont(name: fonts[currentFont] , size: size)
