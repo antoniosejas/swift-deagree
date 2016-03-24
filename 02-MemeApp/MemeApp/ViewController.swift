@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(UIFont.familyNames())
+
         initTextField(tfTop)
         initTextField(tfBottom)
     }
@@ -99,18 +99,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         presentViewController(pickerController, animated: true, completion: nil)
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print("info: ",info)
-        //UIImagePickerControllerMediaType
-        //UIImagePickerControllerOriginalImage
-        //UIImagePickerControllerReferenceURL
-        //https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImagePickerControllerDelegate_Protocol/index.html#//apple_ref/doc/constant_group/Editing_Information_Keys
-        
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imgChoosed.image = image
             //Enable the share button 
             btnShare.enabled = true
         }else{
-            print("Error, returnin the image in didFinishPickingMediaWithInfo",info)
+            print("Error, while returning imagePicker didFinishPickingMediaWithInfo",info)
         }
         dismissViewControllerAnimated(true, completion: nil)
         
