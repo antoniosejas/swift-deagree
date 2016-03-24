@@ -16,7 +16,35 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="5Jc-r2-wP2">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meme_app_text" translatesAutoresizingMaskIntoConstraints="NO" id="ZLX-o9-cVk">
+                                <rect key="frame" x="180" y="353" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Bzv-Cl-sCL"/>
+                                    <constraint firstAttribute="width" constant="240" id="Xtm-3K-uYP"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meme-face" translatesAutoresizingMaskIntoConstraints="NO" id="hIW-hj-ewT">
+                                <rect key="frame" x="146" y="180" width="309" height="165"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="309" id="Rvi-We-R2e"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ZLX-o9-cVk" firstAttribute="centerX" secondItem="5Jc-r2-wP2" secondAttribute="centerX" id="6Na-kS-opS"/>
+                            <constraint firstItem="5Jc-r2-wP2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="BOx-NS-SwJ"/>
+                            <constraint firstAttribute="trailing" secondItem="5Jc-r2-wP2" secondAttribute="trailing" id="Nft-AI-HTr"/>
+                            <constraint firstItem="ZLX-o9-cVk" firstAttribute="centerX" secondItem="hIW-hj-ewT" secondAttribute="centerX" id="Qob-yg-Rp8"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="5Jc-r2-wP2" secondAttribute="bottom" id="USz-yJ-eUS"/>
+                            <constraint firstItem="ZLX-o9-cVk" firstAttribute="top" secondItem="hIW-hj-ewT" secondAttribute="bottom" constant="8" symbolic="YES" id="oR5-V8-YWF"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ZLX-o9-cVk" secondAttribute="bottom" constant="119" id="tJ6-JJ-Hcd"/>
+                            <constraint firstItem="hIW-hj-ewT" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="160" id="tPS-l2-DpN"/>
+                            <constraint firstItem="5Jc-r2-wP2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="wB3-5D-CgO"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +52,9 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background-rectangle" width="2732" height="2732"/>
+        <image name="meme-face" width="430" height="540"/>
+        <image name="meme_app_text" width="754" height="172"/>
+    </resources>
 </document>
