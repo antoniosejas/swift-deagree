@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolbar: UIToolbar!
 
@@ -23,26 +24,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // because if it is declared inside of viewDidLoad, the object is just temporal
     let textEditDelegate = TextEditDelegate()
     
+    var currentFont = 0
+    var fonts = ["Impact", "HelveticaNeue-CondensedBlack"]
+    
     //MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(UIFont.familyNames())
         initTextField(tfTop)
         initTextField(tfBottom)
-    }
-
-    //Cancel Button Action
-    @IBAction func actionCancel(sender: AnyObject) {
-        initTextField(tfTop)
-        initTextField(tfBottom)
-        imgChoosed.image = UIImage()
     }
     
     func initTextField(textField:UITextField){
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+//            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            //impact.tt
+            NSFontAttributeName : UIFont(name: fonts[currentFont], size: 40)!,
             NSStrokeWidthAttributeName : -7.0
         ]
         
@@ -66,6 +65,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Hide status Bar
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    //Cancel Button Action
+    @IBAction func actionCancel(sender: AnyObject) {
+        initTextField(tfTop)
+        initTextField(tfBottom)
+        imgChoosed.image = UIImage()
+    }
+    
+    //ChangeFont Action
+    @IBAction func actionChangeFont(sender: AnyObject) {
+        fonts = UIFont.familyNames()
+        currentFont = (currentFont+1) % fonts.count
+        let size: CGFloat = 40
+        tfTop.font = UIFont(name: fonts[currentFont] , size: size)
+        tfBottom.font = UIFont(name: fonts[currentFont] , size: size)
+        
     }
     
     //MARK: Picker

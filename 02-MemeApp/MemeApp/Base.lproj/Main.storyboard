@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="impact.ttf">
+            <string>Impact</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -48,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="D9D-S0-5Gr"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="y04-7Z-0cJ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hLE-WF-4We"/>
                                     <barButtonItem systemItem="camera" id="Uhz-qq-Q1z">
                                         <connections>
                                             <action selector="actionPickImageCamera:" destination="BYZ-38-t0r" id="62g-X6-cj6"/>
@@ -60,13 +65,17 @@
                                             <action selector="actionPickImage:" destination="BYZ-38-t0r" id="8nU-fG-cXi"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nHG-bd-8yj"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KQx-CG-dQL"/>
+                                    <barButtonItem title="Change Font" id="7fw-0c-hTo">
+                                        <connections>
+                                            <action selector="actionChangeFont:" destination="BYZ-38-t0r" id="Ljd-1C-DTi"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-wU-dLz">
                                 <rect key="frame" x="20" y="69" width="560" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
